@@ -15,10 +15,22 @@ const constrants = {
 const getMicAndCamera = async (e) => {
   try {
     stream = await navigator.mediaDevices.getUserMedia(constrants);
-    console.log(stream);
+    // console.log(stream);
+    changeButtons([
+      "green",
+      "blue",
+      "blue",
+      "blue",
+      "blue",
+      "grey",
+      "grey",
+      "blue",
+    ]);
   } catch (error) {
-    // User denied access to media device
-    console.log("The requested constrants was denied", error);
+    console.log(
+      "The scripted generated an error allowing to share the mic and video an error",
+      error
+    );
   }
 };
 
@@ -26,23 +38,55 @@ const getMicAndCamera = async (e) => {
 const showMyVideoFeed = async (e) => {
   // console.log("Sanity Check", e);
   // console.log(videoEl);
+  // Check if the stream is still loading
+  if (!stream) {
+    alert("The stram is still loading");
+    return;
+  }
   // This will set our video stream to our video element
   videoEl.srcObject = stream;
   // Cache the media tracks
   const tracks = stream.getTracks();
   console.log(tracks);
+  changeButtons([
+    "green",
+    "green",
+    "blue",
+    "blue",
+    "blue",
+    "grey",
+    "grey",
+    "blue",
+  ]);
 };
 
 // Async functions to capture the media device
 const stopMyVideoFeed = async (e) => {
   // console.log("Sanity Check", e);
-  // Cache the media tracks
-  const tracks = stream.getTracks();
-  tracks.forEach((track) => {
-    // console.log(track);
-    // This stops/disassociates the video & audio track from the source
-    track.stop();
-  });
+  try {
+    // Cache the media tracks
+    const tracks = stream.getTracks();
+    tracks.forEach((track) => {
+      // console.log(track);
+      // This stops/disassociates the video & audio track from the source
+      track.stop();
+    });
+    changeButtons([
+      "blue",
+      "grey",
+      "grey",
+      "grey",
+      "grey",
+      "grey",
+      "grey",
+      "grey",
+    ]);
+  } catch (error) {
+    console.log(
+      "The scripted generated an error disassociating the video and audio",
+      error
+    );
+  }
 };
 
 // Cache the share mic and camera button
