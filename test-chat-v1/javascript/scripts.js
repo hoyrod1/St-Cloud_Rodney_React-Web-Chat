@@ -1,4 +1,4 @@
-console.log(`//======== THE SCRIPT FILE IS CONNECTED =======//`);
+console.log(`//======== THE scripts FILE IS CONNECTED =======//`);
 
 // Cache the video element
 const videoEl = document.getElementById("my-video");
@@ -20,11 +20,11 @@ const getMicAndCamera = async (e) => {
       "green",
       "blue",
       "blue",
-      "blue",
-      "blue",
       "grey",
       "grey",
-      "blue",
+      "grey",
+      "grey",
+      "grey",
     ]);
   } catch (error) {
     console.log(
@@ -38,9 +38,9 @@ const getMicAndCamera = async (e) => {
 const showMyVideoFeed = async (e) => {
   // console.log("Sanity Check", e);
   // console.log(videoEl);
-  // Check if the stream is still loading
+  // Check if the stream is still available
   if (!stream) {
-    alert("The stram is still loading");
+    alert("The stream is still loading");
     return;
   }
   // This will set our video stream to our video element
@@ -64,6 +64,11 @@ const showMyVideoFeed = async (e) => {
 const stopMyVideoFeed = async (e) => {
   // console.log("Sanity Check", e);
   try {
+    // Check if the stream is still available
+    if (!stream) {
+      alert("The stream is still loading");
+      return;
+    }
     // Cache the media tracks
     const tracks = stream.getTracks();
     tracks.forEach((track) => {
@@ -101,3 +106,7 @@ showVideoButton.addEventListener("click", (e) => showMyVideoFeed(e));
 const stopVideoButton = document.getElementById("stop-video");
 // Add event listener to stop the video
 stopVideoButton.addEventListener("click", (e) => stopMyVideoFeed(e));
+// Cache the change screen button
+const changeScreenSizeButton = document.getElementById("change-size");
+// Add event listener to the change screen button
+changeScreenSizeButton.addEventListener("click", (e) => changeVideoSize());
