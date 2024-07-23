@@ -93,20 +93,41 @@ const stopMyVideoFeed = async (e) => {
     );
   }
 };
+//===========================================================================//
 
+//===========================================================================//
 // Cache the share mic and camera button
 const shareMicAndCameraButton = document.getElementById("share");
 // Add event listener to the share mic and camera
 shareMicAndCameraButton.addEventListener("click", (e) => getMicAndCamera(e));
+//---------------------------------------------------------------------------//
 // Cache the show video button
 const showVideoButton = document.getElementById("show-video");
 // Add event listener to show the video
 showVideoButton.addEventListener("click", (e) => showMyVideoFeed(e));
+//---------------------------------------------------------------------------//
 // Cache the stop video button
 const stopVideoButton = document.getElementById("stop-video");
 // Add event listener to stop the video
 stopVideoButton.addEventListener("click", (e) => stopMyVideoFeed(e));
+//---------------------------------------------------------------------------//
 // Cache the change screen button
 const changeScreenSizeButton = document.getElementById("change-size");
 // Add event listener to the change screen button
-changeScreenSizeButton.addEventListener("click", (e) => changeVideoSize());
+changeScreenSizeButton.addEventListener("click", (e) => changeVideoSize(e));
+//---------------------------------------------------------------------------//
+// Cache the change screen button
+const startRecordingButton = document.getElementById("start-record");
+// Add event listener to the change screen button
+startRecordingButton.addEventListener("click", (e) => startRecording(e));
+//---------------------------------------------------------------------------//
+// Cache the change screen button
+const stopRecordingButton = document.getElementById("stop-record");
+// Add event listener to the change screen button
+stopRecordingButton.addEventListener("click", (e) => stopRecording(e));
+//---------------------------------------------------------------------------//
+// Cache the change screen button
+const playRecordingButton = document.getElementById("play-record");
+// Add event listener to the change screen button
+playRecordingButton.addEventListener("click", (e) => playRecording(e));
+//===========================================================================//
